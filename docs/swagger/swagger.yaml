@@ -1,0 +1,106 @@
+swagger: '2.0'
+info:
+  description: Orders System for Online Shop U.de.A
+  version: 1.0.0
+  title: Orders System
+host: localhost
+basePath: /orders
+tags:
+  - name: store
+    description: Access to Store Orders
+schemes:
+  - https
+  - http
+paths:
+  /orders/order:
+    post:
+      tags:
+        - store
+      summary: Place an order for a product
+      description: ''
+      operationId: placeOrder
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: order placed for purchasing the product
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Order'
+        '400':
+          description: Invalid Order
+  '/orders/order/{orderId}':
+    get:
+      tags:
+        - store
+      summary: Find purchase order by ID
+      description: >-
+        For valid response try integer IDs
+      operationId: getOrderById
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of product that needs to be fetched
+          required: true
+          type: integer
+          maximum: 10
+          minimum: 1
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Order'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Order not found
+definitions:
+  Product:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string        
+    xml:
+      name: Product
+  Order:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64      
+      products:
+        type: array
+        items:          
+          type: object
+      quantity:
+        type: integer
+        format: int32
+      shipDate:
+        type: string
+        format: date-time
+      status:
+        type: string
+        description: Order Status
+        enum:
+          - placed
+          - approved
+          - delivered
+      complete:
+        type: boolean
+        default: false
+    xml:
+      name: Order

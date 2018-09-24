@@ -15,6 +15,7 @@ public class OrdersBOImpl implements OrdersBO {
 
     @Override
     public Order updateOrder(Order order) {
+        order.setStatus(OrderStatus.APRROVED);
         return order;
     }
 

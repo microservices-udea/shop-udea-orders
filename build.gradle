@@ -29,6 +29,11 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
     compile("org.springframework:spring-jdbc")
 	compile("org.springframework.boot:spring-boot-starter-web")
-	compile("com.h2database:h2")
+    compile("io.springfox:springfox-swagger2:2.9.2")
+    compile("io.springfox:springfox-swagger-ui:2.9.2")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootJar {
+    mainClassName = 'com.udea.orders.OrdersApplication'
 }

@@ -5,6 +5,8 @@ import com.udea.orders.service.OrderServiceFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class OrderService {
 
@@ -21,6 +23,11 @@ public class OrderService {
         Order order = new Order();
         order.setId(id);
         return orderServiceFacade.getOrder(order);
+    }
+
+    @GetMapping("/orders")
+    public List<Order> getOrders() {
+        return orderServiceFacade.getOrders();
     }
 
     @PutMapping("/order/{id}")

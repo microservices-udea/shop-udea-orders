@@ -95,4 +95,11 @@ public class Order {
     public void setTotal(double total) {
         this.total = total;
     }
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", userId=" + userId + ", shipDate=" + shipDate + ", products=" + products
+				+ ", subtotal=" + subtotal + ", total=" + total + ", status=" + status + ", complete=" + complete + "]";
+	}
+    
 }

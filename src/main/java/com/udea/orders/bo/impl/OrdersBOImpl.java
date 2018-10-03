@@ -12,7 +12,7 @@ import java.util.List;
 public class OrdersBOImpl implements OrdersBO {
     @Override
     public Order createOrder(Order order) {
-        order.setStatus(OrderStatus.PLACED);
+        order.setStatus(OrderStatus.CREATED);
         return order;
     }
 

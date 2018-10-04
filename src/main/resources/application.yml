@@ -1,0 +1,42 @@
+info:
+    app:
+        description: Orders System for Online Shop - University of Antioquia
+        name: Orders MicroService
+        version: 1.0.0
+management:
+    endpoints:
+        web:
+            base-path: /
+server:
+    port: 8090
+    servlet:
+        context-path: /orders
+spring:
+    kafka:
+        bootstrap-servers: ${KAFKA_BROKERS}
+        consumer:
+            auto-offset-reset: latest
+            group-id: orders-consumers
+            properties:
+                spring:
+                    json:
+                        trusted:
+                            packages: sample.kafka
+            value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        producer:
+            value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#        properties:
+#            sasl:
+#                jaas:
+#                    config: org.apache.kafka.common.security.scram.ScramLoginModule required username="${KAFKA_USERNAME}" password="${KAFKA_PASSWORD}";
+#                mechanism: SCRAM-SHA-256
+#            security:
+#                protocol: SASL_SSL
+
+topic:
+    orders: orders
+    inventory: inventory
+    payments: payments
+    accounting: accounting
+    cart: cart
+

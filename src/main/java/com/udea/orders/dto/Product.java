@@ -1,7 +1,9 @@
 package com.udea.orders.dto;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonFilter("filterProduct")
 public class Product {
 
     @JsonProperty("product-id")
@@ -36,4 +38,10 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", quantity=" + quantity + ", price=" + price + "]";
+	}
+    
 }

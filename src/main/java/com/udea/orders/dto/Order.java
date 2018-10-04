@@ -1,13 +1,16 @@
 package com.udea.orders.dto;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.LinkedList;
 import java.util.List;
 
+@JsonFilter("filterOrder")
 public class Order {
-
+	
+	@JsonProperty("order-id")
     @ApiModelProperty(hidden = true)
     private String id;
 
@@ -31,6 +34,9 @@ public class Order {
 
     @ApiModelProperty(hidden = true)
     private boolean complete;
+    
+    @JsonProperty("event-id")
+    private String eventOrder;
 
     public String getId() {
         return id;
@@ -95,4 +101,22 @@ public class Order {
     public void setTotal(double total) {
         this.total = total;
     }
+
+	public String getEventOrder() {
+		return eventOrder;
+	}
+
+	public void setEventOrder(String eventOrder) {
+		this.eventOrder = eventOrder;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", userId=" + userId + ", shipDate=" + shipDate + ", products=" + products
+				+ ", subtotal=" + subtotal + ", total=" + total + ", status=" + status + ", complete=" + complete
+				+ ", eventOrder=" + eventOrder + "]";
+	}
+
+	
+    
 }

@@ -1,7 +1,9 @@
 package com.udea.orders.dto;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonFilter("filterProduct")
 public class Product {
 
     @JsonProperty("product-id")

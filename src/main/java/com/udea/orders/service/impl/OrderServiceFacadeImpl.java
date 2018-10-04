@@ -35,7 +35,9 @@ public class OrderServiceFacadeImpl implements OrderServiceFacade {
     	order.setShipDate(Utilities.convertDateToString( new Date()));
     	//Se crea la orden en base de datos
     	order = orders.createOrder(order);
-    	//retorna la orden creada para publicarla en el topico
+    	//Se transforma la orden al mensaje a publicar en el topico
+    	String orderCreated = Utilities.toOrderCreated(order);
+    	//Se publica la orden en el topico
         return order; 
     }
     

@@ -11,7 +11,7 @@ import java.util.List;
 public class OrderService {
 
     @Autowired
-    OrderServiceFacade orderServiceFacade;
+    private OrderServiceFacade orderServiceFacade;
 
     @PostMapping(value = "order")
     public Order createOrder(@RequestBody Order order) {
@@ -23,11 +23,6 @@ public class OrderService {
         Order order = new Order();
         order.setId(id);
         return orderServiceFacade.getOrder(order);
-    }
-
-    @GetMapping("/orders")
-    public List<Order> getOrders() {
-        return orderServiceFacade.getOrders();
     }
 
     @PutMapping("/order/{id}")
@@ -44,5 +39,11 @@ public class OrderService {
         order.setId(id);
         return orderServiceFacade.deleteOrder(order);
     }
+
+    @GetMapping("/orders")
+    public List<Order> getOrders() {
+        return orderServiceFacade.getOrders();
+    }
+
 
 }

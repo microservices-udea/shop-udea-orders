@@ -1,7 +1,9 @@
 package com.udea.orders.bo.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.udea.orders.bo.EventPublisher;
 import com.udea.orders.dto.Order;
+import com.udea.orders.util.Utilities;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -20,8 +22,13 @@ public class EventPublisherImpl implements EventPublisher {
 
     @Override
     public void publishEvent(Order order) {
-        this.kafkaTemplate.send(topic, order.toString());
-        System.out.println("Sent sample message [" + order.toString() + "] to " + topic);
+        try {
+            this.kafkaTemplate.send(topic, Utilities.toOrderCreated(order));
+            System.out.println("Sent sample message [" + order.toString() + "] to " + topic);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

@@ -6,11 +6,13 @@ import com.udea.orders.service.OrderServiceFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderServiceFacadeImpl implements OrderServiceFacade {
 
     @Autowired
-    OrdersBO orders;
+    private OrdersBO orders;
 
     @Override
     public Order createOrder(Order order) {
@@ -31,4 +33,10 @@ public class OrderServiceFacadeImpl implements OrderServiceFacade {
     public Order getOrder(Order order) {
         return orders.getOrder(order);
     }
+
+    @Override
+    public List<Order> getOrders() {
+        return orders.getOrders();
+    }
+
 }

@@ -22,7 +22,7 @@ public class OrderServiceTest {
         order.setId("1");
         order.setComplete(false);
         Order orderResponse = orders.createOrder(order);
-        Assert.assertEquals(orderResponse.getStatus(),OrderStatus.PLACED);
+        Assert.assertEquals(orderResponse.getStatus(),OrderStatus.CREATED);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class OrderServiceTest {
         Order order = new Order();
         order.setId("1");
         order.setStatus(OrderStatus.PLACED);
-        Order orderResponse = orders.updateOrder("1",order);
+        Order orderResponse = orders.updateOrder("1", order);
         Assert.assertEquals(orderResponse.getId(),"1");
         Assert.assertEquals(orderResponse.getStatus(),OrderStatus.APRROVED);
 

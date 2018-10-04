@@ -1,5 +1,5 @@
 package com.udea.orders.dto;
 
 public enum OrderStatus {
-    PLACED, APRROVED, DELIVERED, DELETED;
+    REJECTED, CREATED,PLACED, APRROVED, DELIVERED, DELETED
 }

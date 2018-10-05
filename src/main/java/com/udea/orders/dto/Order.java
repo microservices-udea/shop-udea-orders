@@ -35,8 +35,8 @@ public class Order {
     @ApiModelProperty(hidden = true)
     private boolean complete;
     
-    @JsonProperty("event-id")
-    private String eventOrder;
+    @JsonProperty(value = "event-type")
+    private String eventType;
 
     public String getId() {
         return id;
@@ -102,21 +102,18 @@ public class Order {
         this.total = total;
     }
 
-	public String getEventOrder() {
-		return eventOrder;
-	}
+    public String getEventType() {
+        return eventType;
+    }
 
-	public void setEventOrder(String eventOrder) {
-		this.eventOrder = eventOrder;
-	}
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
 
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", userId=" + userId + ", shipDate=" + shipDate + ", products=" + products
-				+ ", subtotal=" + subtotal + ", total=" + total + ", status=" + status + ", complete=" + complete
-				+ ", eventOrder=" + eventOrder + "]";
-	}
-
-	
-    
+    @Override
+    public String toString() {
+        return "Order [id=" + id + ", userId=" + userId + ", shipDate=" + shipDate + ", products=" + products
+                + ", subtotal=" + subtotal + ", total=" + total + ", status=" + status + ", complete=" + complete
+                + ", eventType=" + eventType + "]";
+    }
 }

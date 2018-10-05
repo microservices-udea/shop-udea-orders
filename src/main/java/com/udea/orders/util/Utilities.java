@@ -24,10 +24,10 @@ public class Utilities {
      * @throws JsonProcessingException Excepción generada sino puede serializar el evento
      */
     public static String toOrderCreated(Order order) throws JsonProcessingException {
-        order.setEventOrder("ordenCreated");
+        order.setEventType("ordenCreated");
         ObjectMapper mapper = new ObjectMapper();
         SimpleBeanPropertyFilter theFilterOrder = SimpleBeanPropertyFilter
-                .filterOutAllExcept("order-id", "user-id", "products", "event-id");
+                .filterOutAllExcept("order-id", "user-id", "products", "event-type");
         SimpleBeanPropertyFilter theFilterProduct = SimpleBeanPropertyFilter
                 .filterOutAllExcept("product-id", "quantity");
         FilterProvider filters = new SimpleFilterProvider()

@@ -23,22 +23,7 @@ public class EventPublisherImpl implements EventPublisher {
     @Override
     public void publishEvent(Order order) {
         try {
-        	String data= "";
-        	switch (order.getStatus()) {
-			case CREATED:
-				data=  Utilities.toOrderCreated(order);
-			
-			case RESERVED: 
-				data=  Utilities.toReservedOrder(order);
-			
-			case REJECTED: 
-
-				break;
-
-			default:
-				break;
-			}
-            this.kafkaTemplate.send(topic, data);
+            this.kafkaTemplate.send(topic, Utilities.toOrderCreated(order));
             System.out.println("Sent sample message [" + order.toString() + "] to " + topic);
         } catch (JsonProcessingException e) {
             e.printStackTrace();

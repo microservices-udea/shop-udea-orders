@@ -35,7 +35,7 @@ public class Order {
     @ApiModelProperty(hidden = true)
     private boolean complete;
     
-    @JsonProperty("event-id")
+    @JsonProperty("event-type")
     private String eventOrder;
 
     public String getId() {

@@ -25,7 +25,6 @@ public class OrdersBOImpl implements OrdersBO {
 
     @Override
     public Order updateOrder(Order order) {
-        order.setStatus(OrderStatus.APRROVED);
         eventPublisher.publishEvent(order);
         return order;
     }

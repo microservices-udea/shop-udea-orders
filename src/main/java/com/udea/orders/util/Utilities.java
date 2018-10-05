@@ -27,7 +27,7 @@ public class Utilities {
         order.setEventOrder("ordenCreated");
         ObjectMapper mapper = new ObjectMapper();
         SimpleBeanPropertyFilter theFilterOrder = SimpleBeanPropertyFilter
-                .filterOutAllExcept("order-id", "user-id", "products", "event-id");
+                .filterOutAllExcept("order-id", "user-id", "products", "event-type");
         SimpleBeanPropertyFilter theFilterProduct = SimpleBeanPropertyFilter
                 .filterOutAllExcept("product-id", "quantity");
         FilterProvider filters = new SimpleFilterProvider()
@@ -40,5 +40,24 @@ public class Utilities {
     public static String convertDateToString(Date dt) {
         DateFormat df = new SimpleDateFormat(formatDate);
         return df.format(dt);
+    }
+    
+    /**
+     * Metodo que transforma la orden recibida a una orden con la informacion
+     * a publicar como evento de Orden reservada
+     *
+     * @param order . orden a transformar
+     * @return orden orden reservada
+     * @throws JsonProcessingException Excepcion generada sino puede serializar el evento
+     */
+    public static String toReservedOrder(Order order) throws JsonProcessingException {
+        order.setEventOrder("reservedOrder");
+        ObjectMapper mapper = new ObjectMapper();
+        SimpleBeanPropertyFilter theFilterOrder = SimpleBeanPropertyFilter
+                .filterOutAllExcept("order-id", "user-id","subtotal", "total", "event-type");
+        FilterProvider filters = new SimpleFilterProvider()
+                .addFilter("filterOrder", theFilterOrder);
+
+        return mapper.writer(filters).writeValueAsString(order);
     }
 }

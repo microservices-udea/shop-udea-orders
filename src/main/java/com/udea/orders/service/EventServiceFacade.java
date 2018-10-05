@@ -10,7 +10,7 @@ public interface EventServiceFacade {
      * @return Order
      */
     Order createdOrder(String message);
-    void reservedOrder(String message);
+    Order reservedOrder(String message);
     void paidOrder(String message);
     void completedOrder(String message);
 

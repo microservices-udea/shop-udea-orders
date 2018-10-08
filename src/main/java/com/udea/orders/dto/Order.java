@@ -1,11 +1,11 @@
 package com.udea.orders.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 
-import java.util.LinkedList;
-import java.util.List;
+import io.swagger.annotations.ApiModelProperty;
 
 @JsonFilter("filterOrder")
 public class Order {
@@ -66,7 +66,7 @@ public class Order {
         return products;
     }
 
-    public void setProducts(LinkedList<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

@@ -1,20 +1,44 @@
 package com.udea.orders.util;
 
+import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.udea.orders.domain.event.cart.CheckedOutEvent;
+import com.udea.orders.domain.event.catalog.InventoryReservedEvent;
 import com.udea.orders.dto.Order;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+public class EventMapper {
 
-public class Utilities {
+	 /**
+     * Metodo que transforma el mensaje recibido del topico de chekout
+     * a un evento CheckedOutEvent
+     * @param mensaje a trasformar
+     * @return evento de CheckedOutEvent
+	 * @throws IOException 
+     */
+    public static CheckedOutEvent toCheckedOutEvent(String messageCheckout) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        CheckedOutEvent checkedOutEvent = objectMapper.readValue(messageCheckout, CheckedOutEvent.class);
 
-    private static final String formatDate = "dd/MM/yyyy";
+        return checkedOutEvent;
+    }
+	 /**
+     * Metodo que transforma el mensaje recibido del topico de inventory
+     * a un evento InventoryReservedEvent
+     * @param mensaje a trasformar
+     * @return evento de InventoryReservedEvent
+	 * @throws IOException 
+     */
+    public static InventoryReservedEvent toInventoryReservedEvent(String messageCheckout) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        InventoryReservedEvent inventoryReservedEvent = objectMapper.readValue(messageCheckout, InventoryReservedEvent.class);
 
+        return inventoryReservedEvent;
+    }
     /**
      * Metodo que transforma la orden recibida a una orden con la informacion
      * a publicar como evento de Orden Creada
@@ -37,11 +61,6 @@ public class Utilities {
         return mapper.writer(filters).writeValueAsString(order);
     }
 
-    public static String convertDateToString(Date dt) {
-        DateFormat df = new SimpleDateFormat(formatDate);
-        return df.format(dt);
-    }
-	
     /**
      * Metodo que transforma la orden recibida a una orden con la informacion
      * a publicar como evento de Orden reservada

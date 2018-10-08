@@ -14,7 +14,7 @@ public class OrderService {
     private OrderServiceFacade orderServiceFacade;
 
     @PostMapping(value = "order")
-    public Order createOrder(@RequestBody Order order) {
+    public Order createOrder(@RequestBody Order order) throws Exception {
         return orderServiceFacade.createOrder(order);
     }
 

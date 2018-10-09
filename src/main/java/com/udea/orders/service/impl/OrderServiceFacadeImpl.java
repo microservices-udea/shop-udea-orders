@@ -1,7 +1,7 @@
 package com.udea.orders.service.impl;
 
 import com.udea.orders.bo.OrdersBO;
-import com.udea.orders.dto.Order;
+import com.udea.orders.domain.Order;
 import com.udea.orders.service.OrderServiceFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

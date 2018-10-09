@@ -1,4 +1,4 @@
-package com.udea.orders.dto;
+package com.udea.orders.enumeration;
 
 public enum InventoryStatus {
 	RESERVED,REJECTED

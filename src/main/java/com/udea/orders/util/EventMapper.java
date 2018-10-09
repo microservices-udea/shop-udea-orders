@@ -7,17 +7,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.udea.orders.domain.event.cart.CheckedOutEvent;
-import com.udea.orders.domain.event.catalog.InventoryReservedEvent;
-import com.udea.orders.dto.Order;
+import com.udea.orders.dto.events.cart.CheckedOutEvent;
+import com.udea.orders.dto.events.catalog.InventoryReservedEvent;
+import com.udea.orders.domain.Order;
 
 public class EventMapper {
 
 	 /**
      * Metodo que transforma el mensaje recibido del topico de chekout
-     * a un evento CheckedOutEvent
-     * @param mensaje a trasformar
-     * @return evento de CheckedOutEvent
+     * a un evento CartEventAdapter
+     * @param messageCheckout a trasformar
+     * @return evento de CartEventAdapter
 	 * @throws IOException 
      */
     public static CheckedOutEvent toCheckedOutEvent(String messageCheckout) throws IOException {
@@ -29,7 +29,7 @@ public class EventMapper {
 	 /**
      * Metodo que transforma el mensaje recibido del topico de inventory
      * a un evento InventoryReservedEvent
-     * @param mensaje a trasformar
+     * @param messageCheckout a trasformar
      * @return evento de InventoryReservedEvent
 	 * @throws IOException 
      */
@@ -45,7 +45,7 @@ public class EventMapper {
      *
      * @param order . orden a transformar
      * @return orden orden creada
-     * @throws JsonProcessingException Excepción generada sino puede serializar el evento
+     * @throws JsonProcessingException Excepciï¿½n generada sino puede serializar el evento
      */
     public static String toOrderCreated(Order order) throws JsonProcessingException {
         order.setEventOrder("ordenCreated");

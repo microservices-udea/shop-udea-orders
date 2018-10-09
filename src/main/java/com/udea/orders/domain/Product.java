@@ -1,4 +1,4 @@
-package com.udea.orders.dto;
+package com.udea.orders.domain;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,4 +1,4 @@
-package com.udea.orders.domain.event.cart;
+package com.udea.orders.dto.events.cart;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

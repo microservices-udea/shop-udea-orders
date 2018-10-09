@@ -1,17 +1,20 @@
-package com.udea.orders.domain.event.catalog;
+package com.udea.orders.dto.events.cart;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class InventoryReservedEvent {
-	
-	@JsonProperty("order-id")
+import java.util.LinkedList;
+import java.util.List;
+
+public class CheckedOutEvent {
+
+    @JsonProperty("order-id")
     private String orderId;
 
     @JsonProperty("user-id")
     private String userId;
 
-    @JsonProperty("event-type")
-    private String eventType;
+    @JsonProperty("products")
+    private List<ProductCart> products;
 
     public String getOrderId() {
         return orderId;
@@ -28,12 +31,14 @@ public class InventoryReservedEvent {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-    public String getEventType() {
-        return eventType;
+
+    public List<ProductCart> getProducts() {
+        return products;
     }
 
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
+    public void setProducts(LinkedList<ProductCart> products) {
+        this.products = products;
     }
-   
+
+
 }

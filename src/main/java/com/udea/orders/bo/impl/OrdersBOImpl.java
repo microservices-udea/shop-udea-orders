@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.udea.orders.bo.OrdersBO;
-import com.udea.orders.dto.Order;
-import com.udea.orders.dto.OrderStatus;
+import com.udea.orders.domain.Order;
+import com.udea.orders.enumeration.OrderStatus;
 import com.udea.orders.util.UtilDates;
 
 

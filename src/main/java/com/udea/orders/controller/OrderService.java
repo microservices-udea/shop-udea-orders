@@ -1,6 +1,6 @@
-package com.udea.orders.rs;
+package com.udea.orders.controller;
 
-import com.udea.orders.dto.Order;
+import com.udea.orders.domain.Order;
 import com.udea.orders.service.OrderServiceFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

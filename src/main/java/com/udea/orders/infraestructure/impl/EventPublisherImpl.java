@@ -1,8 +1,8 @@
-package com.udea.orders.bo.impl;
+package com.udea.orders.infraestructure.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.udea.orders.bo.EventPublisher;
-import com.udea.orders.dto.Order;
+import com.udea.orders.infraestructure.EventPublisher;
+import com.udea.orders.domain.Order;
 import com.udea.orders.util.EventMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -26,7 +26,7 @@ public class EventPublisherImpl implements EventPublisher {
     		String data= "";
     		switch (order.getStatus()) {
     		case CREATED:
-    			data=  EventMapper.toOrderCreated(order);
+    			data =  EventMapper.toOrderCreated(order);
 
     		case RESERVED: 
     			data=  EventMapper.toReservedOrder(order);

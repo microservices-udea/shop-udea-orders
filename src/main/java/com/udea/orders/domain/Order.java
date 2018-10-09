@@ -1,10 +1,11 @@
-package com.udea.orders.dto;
+package com.udea.orders.domain;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.udea.orders.enumeration.OrderStatus;
 import io.swagger.annotations.ApiModelProperty;
 
 @JsonFilter("filterOrder")

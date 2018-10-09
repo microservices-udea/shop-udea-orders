@@ -1,6 +1,6 @@
 package com.udea.orders.bo;
 
-import com.udea.orders.dto.Order;
+import com.udea.orders.domain.Order;
 
 import java.util.List;
 

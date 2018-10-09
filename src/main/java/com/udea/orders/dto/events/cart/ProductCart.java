@@ -1,10 +1,8 @@
-package com.udea.orders.dto;
+package com.udea.orders.dto.events.cart;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonFilter("filterProduct")
-public class Product {
+public class ProductCart {
 
     @JsonProperty("product-id")
     private String productId;
@@ -41,6 +39,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", quantity=" + quantity + ", price=" + price + "]";
+		return "ProductCart [productId=" + productId + ", quantity=" + quantity + ", price=" + price + "]";
 	}
+
 }

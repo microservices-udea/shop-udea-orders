@@ -1,11 +1,12 @@
-package com.udea.orders.dto;
+package com.udea.orders.domain;
+
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 
-import java.util.LinkedList;
-import java.util.List;
+import com.udea.orders.enumeration.OrderStatus;
+import io.swagger.annotations.ApiModelProperty;
 
 @JsonFilter("filterOrder")
 public class Order {
@@ -35,8 +36,13 @@ public class Order {
     @ApiModelProperty(hidden = true)
     private boolean complete;
     
+<<<<<<< HEAD:src/main/java/com/udea/orders/dto/Order.java
     @JsonProperty(value = "event-type")
     private String eventType;
+=======
+    @JsonProperty("event-type")
+    private String eventOrder;
+>>>>>>> feature/reservar_Orden:src/main/java/com/udea/orders/domain/Order.java
 
     public String getId() {
         return id;
@@ -66,7 +72,7 @@ public class Order {
         return products;
     }
 
-    public void setProducts(LinkedList<Product> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

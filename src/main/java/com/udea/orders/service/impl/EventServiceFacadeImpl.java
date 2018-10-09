@@ -20,14 +20,15 @@ public class EventServiceFacadeImpl implements EventServiceFacade {
 	private EventPublisher eventPublisher;
 
     @Override
-    public void createdOrder(Order order) {
-    	 Order createdOrder = new Order();
+    public Order createdOrder(Order order) {
+    	Order createdOrder = new Order();
     	try {
     		createdOrder = orderService.createOrder(order);
     		eventPublisher.publishEvent(createdOrder);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+    	} catch (Exception e) {
+    		// TODO: handle exception
+    	}
+    	return createdOrder;
     }
 
     @Override

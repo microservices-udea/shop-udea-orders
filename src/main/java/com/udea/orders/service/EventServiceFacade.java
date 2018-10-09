@@ -9,7 +9,7 @@ public interface EventServiceFacade {
      * @param message Evento para crear orden
      * @return Order
      */
-    void createdOrder(Order order);
+    Order createdOrder(Order order);
     void reservedOrder(Order order);
     void paidOrder(String message);
     void completedOrder(String message);

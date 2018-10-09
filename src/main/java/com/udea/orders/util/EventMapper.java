@@ -48,7 +48,7 @@ public class EventMapper {
      * @throws JsonProcessingException Excepci�n generada sino puede serializar el evento
      */
     public static String toOrderCreated(Order order) throws JsonProcessingException {
-        order.setEventOrder("ordenCreated");
+        order.setEventType("ordenCreated");
         ObjectMapper mapper = new ObjectMapper();
         SimpleBeanPropertyFilter theFilterOrder = SimpleBeanPropertyFilter
                 .filterOutAllExcept("order-id", "user-id", "products", "event-id");
@@ -70,7 +70,7 @@ public class EventMapper {
      * @throws JsonProcessingException Excepcion generada sino puede serializar el evento
      */
     public static String toReservedOrder(Order order) throws JsonProcessingException {
-    	order.setEventOrder("reservedOrder");
+    	order.setEventType("reservedOrder");
     	ObjectMapper mapper = new ObjectMapper();
     	SimpleBeanPropertyFilter theFilterOrder = SimpleBeanPropertyFilter
     			.filterOutAllExcept("order-id", "user-id","subtotal", "total", "event-type");

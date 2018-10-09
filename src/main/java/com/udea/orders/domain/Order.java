@@ -36,13 +36,8 @@ public class Order {
     @ApiModelProperty(hidden = true)
     private boolean complete;
     
-<<<<<<< HEAD:src/main/java/com/udea/orders/dto/Order.java
     @JsonProperty(value = "event-type")
     private String eventType;
-=======
-    @JsonProperty("event-type")
-    private String eventOrder;
->>>>>>> feature/reservar_Orden:src/main/java/com/udea/orders/domain/Order.java
 
     public String getId() {
         return id;

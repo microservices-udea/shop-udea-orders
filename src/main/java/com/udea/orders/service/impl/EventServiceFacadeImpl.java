@@ -33,7 +33,7 @@ public class EventServiceFacadeImpl implements EventServiceFacade {
     public void reservedOrder(Order order) {
         //Se deserializa el mensaje al objeto Order
         Order reservedOrder = new Order();
-        String status = order != null ? order.getEventOrder() : "";
+        String status = order != null ? order.getEventType() : "";
 
         if (InventoryStatus.RESERVED.name().equalsIgnoreCase(status)) {
             //Se actualiza la orden a reservada

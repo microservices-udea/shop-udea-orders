@@ -17,7 +17,7 @@ public class InventoryEventAdaptee {
         Order order = new Order();
         order.setId(event.getOrderId());
         order.setUserId(event.getUserId());
-        order.setEventOrder(event.getEventType());
+        order.setEventType(event.getEventType());
         return order;
     }
 

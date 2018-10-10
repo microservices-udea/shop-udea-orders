@@ -4,13 +4,10 @@ import javax.persistence.*;
 
 @Entity
 public class Products {
-    @Id
-    @GeneratedValue
+
     @Column(name = "item_id")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
     private Orders order;
 
     @Column(name = "product_id")
@@ -22,6 +19,8 @@ public class Products {
     @Column(name = "price")
     private double price;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -30,6 +29,8 @@ public class Products {
         this.id = id;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "order_id")
     public Orders getOrder() {
         return order;
     }

@@ -3,13 +3,11 @@ package com.udea.orders.entities;
 import com.udea.orders.enumeration.OrderStatus;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Orders {
 
-    @Id
-    @GeneratedValue
     @Column(name = "order_id")
     private Integer id;
 
@@ -19,8 +17,7 @@ public class Orders {
     @Column(name = "ship_date")
     private String shipDate;
 
-    @OneToMany(mappedBy = "order")
-    private List<Products> products;
+    private Set<Products> products;
 
     @Column(name = "subtotal")
     private double subtotal;
@@ -34,6 +31,8 @@ public class Orders {
     @Column(name = "complete")
     private boolean complete;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -58,11 +57,12 @@ public class Orders {
         this.shipDate = shipDate;
     }
 
-    public List<Products> getProducts() {
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    public Set<Products> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Products> products) {
+    public void setProducts(Set<Products> products) {
         this.products = products;
     }
 

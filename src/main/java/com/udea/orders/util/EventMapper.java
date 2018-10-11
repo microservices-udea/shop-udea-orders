@@ -48,10 +48,10 @@ public class EventMapper {
      * @throws JsonProcessingException Excepci�n generada sino puede serializar el evento
      */
     public static String toOrderCreated(Order order) throws JsonProcessingException {
-        order.setEventType("ordenCreated");
+        order.setEventType("orderCreated");
         ObjectMapper mapper = new ObjectMapper();
         SimpleBeanPropertyFilter theFilterOrder = SimpleBeanPropertyFilter
-                .filterOutAllExcept("order-id", "user-id", "products", "event-id");
+                .filterOutAllExcept("order-id", "user-id", "products", "event-id", "event-type");
         SimpleBeanPropertyFilter theFilterProduct = SimpleBeanPropertyFilter
                 .filterOutAllExcept("product-id", "quantity");
         FilterProvider filters = new SimpleFilterProvider()
@@ -69,7 +69,7 @@ public class EventMapper {
      * @return orden orden reservada
      * @throws JsonProcessingException Excepcion generada sino puede serializar el evento
      */
-    public static String toReservedOrder(Order order) throws JsonProcessingException {
+    public static String toOrderReserved(Order order) throws JsonProcessingException {
     	order.setEventType("reservedOrder");
     	ObjectMapper mapper = new ObjectMapper();
     	SimpleBeanPropertyFilter theFilterOrder = SimpleBeanPropertyFilter
@@ -78,5 +78,27 @@ public class EventMapper {
     			.addFilter("filterOrder", theFilterOrder);
 
     	return mapper.writer(filters).writeValueAsString(order);
+    }
+
+    /**
+     * Metodo que transforma la orden recibida a una orden con la informacion
+     * a publicar como evento de Orden Rechazada
+     *
+     * @param order . orden a transformar
+     * @return orden orden rechazada
+     * @throws JsonProcessingException Excepci�n generada sino puede serializar el evento
+     */
+    public static String toOrderRejected(Order order) throws JsonProcessingException {
+        order.setEventType("orderRejected");
+        ObjectMapper mapper = new ObjectMapper();
+        SimpleBeanPropertyFilter theFilterOrder = SimpleBeanPropertyFilter
+                .filterOutAllExcept("order-id", "user-id", "products", "event-id", "event-type");
+        SimpleBeanPropertyFilter theFilterProduct = SimpleBeanPropertyFilter
+                .filterOutAllExcept("product-id", "quantity");
+        FilterProvider filters = new SimpleFilterProvider()
+                .addFilter("filterOrder", theFilterOrder)
+                .addFilter("filterProduct", theFilterProduct);
+
+        return mapper.writer(filters).writeValueAsString(order);
     }
 }

@@ -16,6 +16,9 @@ public class CheckedOutEvent {
     @JsonProperty("products")
     private List<ProductCart> products;
 
+    @JsonProperty("total")
+    private double total;
+
     public String getOrderId() {
         return orderId;
     }
@@ -40,5 +43,11 @@ public class CheckedOutEvent {
         this.products = products;
     }
 
+    public double getTotal() {
+        return total;
+    }
 
+    public void setTotal(double total) {
+        this.total = total;
+    }
 }

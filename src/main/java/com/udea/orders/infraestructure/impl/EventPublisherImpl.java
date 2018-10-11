@@ -27,12 +27,12 @@ public class EventPublisherImpl implements EventPublisher {
     		switch (order.getStatus()) {
     		case CREATED:
     			data =  EventMapper.toOrderCreated(order);
-
+				break;
     		case RESERVED: 
-    			data=  EventMapper.toReservedOrder(order);
-
-    		case REJECTED: 
-
+    			data=  EventMapper.toOrderReserved(order);
+				break;
+    		case REJECTED:
+				data=  EventMapper.toOrderRejected(order);
     			break;
 
     		default:

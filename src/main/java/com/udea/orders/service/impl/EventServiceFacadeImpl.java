@@ -25,7 +25,8 @@ public class EventServiceFacadeImpl implements EventServiceFacade {
             Order createdOrder = orderService.createOrder(order);
             eventPublisher.publishEvent(createdOrder);
         } catch (Exception e) {
-            // TODO: handle exception
+            order.setStatus(OrderStatus.REJECTED);
+            eventPublisher.publishEvent(order);
         }
     }
 

@@ -23,7 +23,7 @@ public class CartEventAdaptee {
         List<Product> products = new ArrayList<>();
         order.setId(event.getOrderId());
         order.setUserId(event.getUserId());
-
+        order.setTotal(event.getTotal());
         if (event.getProducts() != null) {
             for (ProductCart productCart : event.getProducts()) {
                 Product product = new Product();

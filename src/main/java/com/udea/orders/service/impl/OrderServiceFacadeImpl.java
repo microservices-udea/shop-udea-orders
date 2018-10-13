@@ -20,8 +20,8 @@ public class OrderServiceFacadeImpl implements OrderServiceFacade {
 	}
 
 	@Override
-	public Order reservedOrder(Order order) {
-		return orders.reservedOrder(order);		
+	public void reservedOrder(Order order) {
+		orders.reservedOrder(order);		
 	}
 
 	@Override

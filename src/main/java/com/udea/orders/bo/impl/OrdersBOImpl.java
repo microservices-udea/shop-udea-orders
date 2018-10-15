@@ -35,11 +35,12 @@ public class OrdersBOImpl implements OrdersBO {
     }
 
     @Override
-    public Order reservedOrder(Order order) {
-        order.setStatus(OrderStatus.RESERVED);
-        //TODO: conviertir dto a entity
-        //TODO: persistencia
-        return order;
+    public void reservedOrder(Order order) {
+    	Integer idOrder= Integer.parseInt(order.getId());
+    	Optional<Orders> orders = orderRepository.findById(idOrder);
+    	if(orders.isPresent()){
+    		orderRepository.save(toOrders(order));
+    	}
     }
 
     @Override

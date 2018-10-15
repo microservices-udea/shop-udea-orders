@@ -32,22 +32,23 @@ public class EventServiceFacadeImpl implements EventServiceFacade {
 
     @Override
     public void reservedOrder(Order order) {
-        //Se deserializa el mensaje al objeto Order
-        Order reservedOrder = new Order();
-        String status = order != null ? order.getEventType() : "";
+    	try {
+    		String status = order != null ? order.getEventType() : "";
 
-        if (InventoryStatus.RESERVED.name().equalsIgnoreCase(status)) {
-            //Se actualiza la orden a reservada
-            order.setStatus(OrderStatus.RESERVED);
+    		if (InventoryStatus.RESERVED.name().equalsIgnoreCase(status)) {
+    			//Se actualiza la orden a reservada
+    			order.setStatus(OrderStatus.RESERVED);
 
-        } else if (InventoryStatus.REJECTED.name().equalsIgnoreCase(status)) {
-            //Se actualiza la orden a rechazada
-            order.setStatus(OrderStatus.REJECTED);
-        }
-        // de lo contrario se devuelve mensaje al topico
-        reservedOrder = orderService.reservedOrder(order);
-        eventPublisher.publishEvent(reservedOrder);
-
+    		} else if (InventoryStatus.REJECTED.name().equalsIgnoreCase(status)) {
+    			//Se actualiza la orden a rechazada
+    			order.setStatus(OrderStatus.REJECTED);
+    		}
+    		orderService.reservedOrder(order);
+    		eventPublisher.publishEvent(order);
+    	} catch (Exception e) {
+    		order.setStatus(OrderStatus.REJECTED);
+    		eventPublisher.publishEvent(order);
+    	}
     }
 
     @Override
